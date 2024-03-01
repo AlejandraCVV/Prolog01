@@ -2,11 +2,11 @@ materia(programacion1).
 materia(redes2).
 materia(inteligenciaArtificial).
 
-enseña(programacion1,mario).
-enseña(redes2,mario).
-enseña(programacion1,arturica).
-enseña(inteligenciaArtificial,arturica).
-enseña(redes2,andres).
+ensena(programacion1,mario).
+ensena(redes2,mario).
+ensena(programacion1,arturica).
+ensena(inteligenciaArtificial,arturica).
+ensena(redes2,andres).
 
 pasaClases(redes2,carla).
 pasaClases(inteligenciaArtificial,carla).
