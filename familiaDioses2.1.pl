@@ -41,5 +41,5 @@ esHermano(HermanoA,HermanoB):-esHombre(HermanoA),esDescendienteDirecto(HermanoA,
 esAbuelo(Abuelo,Nieto):-esHombre(Abuelo),esDescendienteDirecto(Nieto,Padre),esDescendienteDirecto(Padre,Abuelo).
 esAbuela(Abuela,Nieto):-esMujer(Abuela),esDescendienteDirecto(Nieto,Madre),esDescendienteDirecto(Madre,Abuelo).
 
-esAncestro(Ancestro,Persona):-esPadre(Ancestro,Persona);esMadre(Ancestro,Persona).
-esAncestro(Ancestro,Persona):-esPadre(Ancestro,X),esMadre(X,Persona).
+esAncestro(Ancestro,Persona):-esHombre(Ancestro),esDescendienteDirecto(Persona,Ancestro).
+esAncestro(Ancestro,Persona):-esDescendienteDirecto(Persona,Padre),esAncestro(Ancestro,Padre).
