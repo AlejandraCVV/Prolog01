@@ -29,59 +29,17 @@ esDescendienteDirecto(nera,zeus).
 esDescendienteDirecto(hermes,atena).
 
 %Reglas
-esPadreR(Padre,Hijo):-esPadre(Hijo),esPadre(Padre,Hijo).
+esPadre(Padre,Hijo):-esHombre(Hijo),esDescendienteDirecto(Hijo,Padre).
+esMadre(Madre,Hijo):-esMujer(Hijo),esDescendienteDirecto(Hijo,Madre).
 
-esPadre(cronos,hera).
-esPadre(ares,afrodita).
-esPadre(ares,hefesto).
-esPadre(poseidon,zeus).
-esPadre(hefesto,atena).
-esPadre(hefesto,baco).
-esPadre(zeus,nera).
+esHijo(Hijo,Padre):-esHombre(Hijo),esDescendienteDirecto(Hijo,Padre).
+esHija(Hijo,Madre):-esHombre(Hijo),esDescendienteDirecto(Hijo,Madre).
 
-esMadre(hera,afrodita).
-esMadre(hera,hefesto).
-esMadre(afrodita,zeus).
-esMadre(afrodita,baco).
-esMadre(afrodita,atena).
-esMadre(atena,hermes).
-esMadre(hipolita,nera).
+esHermano(HermanoA,HermanoB):-esHombre(HermanoA),esDescendienteDirecto(HermanoA,Padre),esDescendienteDirecto(HermanoB,Padre),HermanoA\==HermanoB.
+esHermano(HermanoA,HermanoB):-esHombre(HermanoA),esDescendienteDirecto(HermanoA,Padre),esDescendienteDirecto(HermanoB,Padre).
 
-esHijo(hefesto,ares).
-esHijo(hefesto,hera).
-esHijo(zeus,poseidon).
-esHijo(zeus,afrodita).
-esHijo(baco,afrodita).
-esHijo(baco,hefesto).
-esHijo(hermes,atena).
+esAbuelo(Abuelo,Nieto):-esHombre(Abuelo),esDescendienteDirecto(Nieto,Padre),esDescendienteDirecto(Padre,Abuelo).
+esAbuela(Abuela,Nieto):-esMujer(Abuela),esDescendienteDirecto(Nieto,Madre),esDescendienteDirecto(Madre,Abuelo).
 
-esHija(hera,cronos).
-esHija(afrodita,ares).
-esHija(afrodita,hera).
-esHija(atena,afrodita).
-esHija(atena,hefesto).
-esHija(nera,hipolita).
-esHija(nera,zeus).
-
-esHermano(hefesto,afrodita).
-esHermano(baco, atena).
-esHermano(zeus,baco).
-esHermano(zeus,atena).
-
-esHermana(afrodita,hefesto).
-esHermana(atena,baco).
-esHermana(atena,zeus).
-
-esAbuelo(cronos,afrodita).
-esAbuelo(cronos,hefesto).
-esAbuelo(ares,zeus).
-esAbuelo(ares,baco).
-esAbuelo(ares,atena).
-esAbuelo(poseidon,nera).
-esAbuelo(hefesto,hermes).
-
-esAbuela(hera, zeus).
-esAbuela(hera, baco).
-esAbuela(hera, atena).
-esAbuela(afrodita, nera).
-esAbuela(afrodita, hermes).
+esAncestro(Ancestro,Persona):-esPadre(Ancestro,Persona);esMadre(Ancestro,Persona).
+esAncestro(Ancestro,Persona):-esPadre(Ancestro,X),esAncestro(X,Persona).
